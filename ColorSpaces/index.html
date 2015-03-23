@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Colors</title>
+    <link rel="stylesheet" href="styles/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/index.css">
+    <link rel="stylesheet" href="styles/jquery-ui.css">
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/jquery-ui-1.10.4.js"></script>
+</head>
+<body>
+<div class="container body-content">
+    <div class="container constrained" id="topContainer">
+        <div class="panel-body">
+            <div class="box verticalFull">
+                <div id="hueSlider" class="verticalFull slider leftSlider"></div>
+                <canvas width="15px" id="hueCanvas"></canvas>
+                <canvas id="svCanvas"></canvas>
+                <canvas id="resultCanvas" width="60px" height="60px" onclick=""></canvas>
+                <table class="valueTable">
+                    <tr>
+                        <td><label for="hInput">H:</label></td>
+                        <td><input id="hInput" type="number" min="0" max="359" value="180"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="hInput">S:</label></td>
+                        <td><input id="sInput" type="number" min="0" max="100" value="100"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="hInput">V:</label></td>
+                        <td><input id="vInput" type="number" min="0" max="100" value="100"></td>
+                    </tr>
+                </table>
+                <table class="valueTable">
+                    <tr>
+                        <td><label for="cInput">R:</label></td>
+                        <td><input class="bordered" id="rInput" type="number" min="0" max="255" value="0" readonly></td>
+                    </tr>
+                    <tr>
+                        <td><label for="mInput">G:</label></td>
+                        <td><input class="bordered" id="gInput" type="number" min="0" max="255" value="255" readonly></td>
+                    </tr>
+                    <tr>
+                        <td><label for="yInput">B:</label></td>
+                        <td><input class="bordered" id="bInput" type="number" min="0" max="255" value="255" readonly></td>
+                    </tr>
+                </table>
+                <button id="fasterBt" onclick="changeMode()">Speed / Beauty</button>
+                <div id="container3d"></div>
+                <div id="valueSlider" class="verticalFull slider rightSlider"></div>
+                <div id="saturationSlider" class="horizontalFull slider bottomSlider"></div>
+            </div>
+            <div class="box">
+                <table>
+                    <tr>
+                        <td><label for="c2Slider">C*: <div id="c2Slider" class="horizontal"></div></label></td>
+                        <td><input id="c2Input" type="number" min="0" max="255" value="255"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="m2Slider">M*: <div id="m2Slider" class="horizontal"></div></label></td>
+                        <td><input id="m2Input" type="number" min="0" max="255" value="0"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="y2Slider">Y*: <div id="y2Slider" class="horizontal"></div></label></td>
+                        <td><input id="y2Input" type="number" min="0" max="255" value="0"></td>
+                    </tr>
+                    <tr>
+                        <td><label for="kSlider">K*: <div id="kSlider" class="horizontal"></div></label></td>
+                        <td><input id="kInput" type="number" min="0" max="255" value="0"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="row" id="bottomContainer">
+        <div class="box vertical">
+            <div id="cSlider" class="vertical slider leftSlider"></div>
+            <canvas width="15px" id="cCanvas"></canvas>
+            <canvas id="myCanvas"></canvas>
+            <table class="valueTable">
+                <tr>
+                    <td><label for="cInput">C:</label></td>
+                    <td><input class="bordered" id="cInput" type="number" min="0" max="255" value="255"></td>
+                </tr>
+                <tr>
+                    <td><label for="mInput">M:</label></td>
+                    <td><input class="bordered" id="mInput" type="number" min="0" max="255" value="0"></td>
+                </tr>
+                <tr>
+                    <td><label for="yInput">Y:</label></td>
+                    <td><input class="bordered" id="yInput" type="number" min="0" max="255" value="0"></td>
+                </tr>
+                <tr>
+                    <td><label for="k">K:</label></td>
+                    <td><input id="k" readonly type="number" value="0"></td>
+                </tr>
+            </table>
+            <div id="mSlider" class="vertical slider rightSlider bordered"></div>
+            <div id="ySlider" class="horizontal slider bottomSlider bordered"></div>
+        </div>
+        <div class="box vertical">
+            <div id="y_slider" class="vertical slider leftSlider bordered"></div>
+            <canvas width="15px" id="yCanvas"></canvas>
+            <canvas id="xzCanvas"></canvas>
+            <table class="valueTable" id="xyzTable">
+                <tr>
+                    <td><label for="x_input">X:</label></td>
+                    <td><input class="bordered" id="x_input" type="number" min="0" max="255" value="137"></td>
+                </tr>
+                <tr>
+                    <td><label for="y_input">Y:</label></td>
+                    <td><input class="bordered" id="y_input" type="number" min="0" max="255" value="201"></td>
+                </tr>
+                <tr>
+                    <td><label for="z_input">Z:</label></td>
+                    <td><input class="bordered" id="z_input" type="number" min="0" max="255" value="273"></td>
+                </tr>
+            </table>
+            <div id="x_slider" class="vertical slider rightSlider bordered"></div>
+            <div id="z_slider" class="horizontal slider bottomSlider bordered"></div>
+        </div>
+        <div class="box vertical">
+            <div id="l_slider" class="vertical slider leftSlider bordered"></div>
+            <canvas width="15px" id="lCanvas"></canvas>
+            <canvas id="uvCanvas"></canvas>
+            <table class="valueTable" id="luvTable">
+                <tr>
+                    <td><label for="l_input">L:</label></td>
+                    <td><input class="bordered" id="l_input" type="number" min="0" max="100" value="93"></td>
+                </tr>
+                <tr>
+                    <td><label for="u_input">U:</label></td>
+                    <td><input class="bordered" id="u_input" type="number" min="-200" max="200" value="-94"></td>
+                </tr>
+                <tr>
+                    <td><label for="v_input">V:</label></td>
+                    <td><input class="bordered" id="v_input" type="number" min="-200" max="200" value="-8"></td>
+                </tr>
+            </table>
+            <div id="u_slider" class="vertical slider rightSlider bordered"></div>
+            <div id="v_slider" class="horizontal slider bottomSlider bordered"></div>
+        </div>
+    </div>
+</div>
+    <script src="js/colorPicker.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/cubeColoring.js"></script>
+    <script src="js/coneColoring.js"></script>
+    <script src="js/scene.js"></script>
+    <script src="js/rgb.js"></script>
+    <script src="js/hsv.js"></script>
+    <script src="js/xyz.js"></script>
+    <script src="js/luv.js"></script>
+    <script src="js/cmyk.js"></script>
+    <script src="js/cmyk2.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/palette.js"></script>
+</body>
+</html>

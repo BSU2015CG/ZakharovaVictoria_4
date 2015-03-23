@@ -1,0 +1,90 @@
+body{
+    background-color: rgb(40, 22, 47);
+}
+input{
+    padding: 0 3px;
+    width: 55px;
+}
+label{
+    margin:0;
+    color: rgb(221, 223, 144);
+}
+.bottomSlider, .rightSlider, #resultCanvas{
+    margin-left:15px !important;
+}
+.bottomSlider{
+    bottom: 0;
+}
+#bottomContainer{
+    margin-left:auto;
+    margin-right:auto;
+    max-width: 900px;
+}
+.leftSlider, .bottomSlider{
+    position: absolute !important;
+}
+.horizontal{
+    margin-top: 5px;
+    margin: 0 8px;
+    display: inline-block;
+}
+.container{
+    padding:0;
+}
+.constrained{
+    max-width: 480px;
+}
+.box{
+    float:left;
+    position: relative;
+    margin-bottom: 20px;
+    padding: 0 10px;
+}
+.slider{
+    background: rgba(0, 0, 0, 0) !important;
+}
+.ui-slider-range{
+    background: rgba(0, 0, 0, 0) !important;
+}
+canvas, .valueTable, #container3d{
+    float:left;
+}
+#container3d{
+    margin-left:50px;
+}
+.valueTable{
+    margin-left:5px;
+}
+.bordered{
+    border-width: 2px;
+}
+#cSlider, #cInput, #cSlider a{
+    border-color: cyan;
+}
+#ySlider, #ySlider a, #yInput{
+    border-color: yellow;
+}
+#mSlider, #mInput, #mSlider a{
+    border-color: magenta;
+}
+#ySlider, #ySlider a, #yInput{
+    border-color: yellow;
+}
+#x_slider, #x_slider a, #x_input, #l_slider, #l_slider a, #l_input{
+    border-color: green;
+}
+#y_slider, #y_slider a, #y_input, #u_slider, #u_slider a, #u_input{
+    border-color: red;
+}
+#z_slider, #z_slider a, #z_input, #v_slider, #v_slider a, #v_input{
+    border-color: blue;
+}
+#fasterBt{
+    width: 60px;
+    padding: 5px;
+    font-size: small;
+    height: 60px;
+    margin: 13px 10px;
+    background-color: rgb(150, 98, 98);
+    float: left;
+}

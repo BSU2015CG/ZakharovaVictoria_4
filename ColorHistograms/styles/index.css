@@ -1,0 +1,57 @@
+body{
+    background-color: #FFFFDE;
+}
+.ui-slider{
+    width: 147px;
+    margin: 0 10px;
+}
+.row {
+    display: flex;
+}
+.panel-absolute{
+    position: absolute;
+    top:0;
+    bottom:0;
+    right: 0;
+    left: 0;
+    overflow: auto;
+}
+input{
+    padding: 0 3px;
+    width: 55px;
+    float:right;
+    margin-right:3px;
+}
+div.panel-heading>table{
+    margin: 5px;
+}
+td{
+    padding:0;
+}
+#imageCanvas{
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+div.upload, div.upload input{
+    width: 157px;
+    height: 57px;
+}
+div.upload {
+    background: url(upload.png);
+}
+div.upload input {
+    opacity: 0;
+}
+.box{
+    float:left;
+    position: relative;
+    padding: 0 4px;
+}
+.leftSlider, .bottomSlider{
+    position: absolute !important;
+}
+.bottomSlider{
+    bottom: 0;
+    margin-left:15px !important;
+}
