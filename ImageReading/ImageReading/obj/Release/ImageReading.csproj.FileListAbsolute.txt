@@ -1,0 +1,9 @@
+C:\Users\User\Documents\Visual Studio 2013\Projects\ImageReading\ImageReading\bin\Release\ImageReading.exe.config
+C:\Users\User\Documents\Visual Studio 2013\Projects\ImageReading\ImageReading\bin\Release\ImageReading.exe
+C:\Users\User\Documents\Visual Studio 2013\Projects\ImageReading\ImageReading\bin\Release\ImageReading.pdb
+C:\Users\User\Documents\Visual Studio 2013\Projects\ImageReading\ImageReading\obj\Release\ImageReading.csprojResolveAssemblyReference.cache
+C:\Users\User\Documents\Visual Studio 2013\Projects\ImageReading\ImageReading\obj\Release\ImageReading.Form1.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\ImageReading\ImageReading\obj\Release\ImageReading.Properties.Resources.resources
+C:\Users\User\Documents\Visual Studio 2013\Projects\ImageReading\ImageReading\obj\Release\ImageReading.csproj.GenerateResource.Cache
+C:\Users\User\Documents\Visual Studio 2013\Projects\ImageReading\ImageReading\obj\Release\ImageReading.exe
+C:\Users\User\Documents\Visual Studio 2013\Projects\ImageReading\ImageReading\obj\Release\ImageReading.pdb
