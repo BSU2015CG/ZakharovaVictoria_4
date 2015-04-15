@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Color Cube</title>
+</head>
+<body>
+	<label class="r from">R: from <input
+			type="number" min="0" max="255" value="0" id="rFrom" class="r from"/>
+	</label>
+	<label class="r to"> to <input
+			type="number" min="0" max="255" id="rTo" class="r to"/>
+	</label>
+	<label class="g from">G: from <input
+			type="number" min="0" max="255" value="0" id="gFrom" class="g from"/>
+	</label>
+	<label class="g to"> to <input
+			type="number" min="0" max="255" id="gTo" class="g to"/>
+	</label>
+	<label class="b from">B: from <input
+			type="number" min="0" max="255" value="0" id="bFrom" class="b from"/>
+	</label>
+	<label class="b to"> to <input
+			type="number" min="0" max="255" id="bTo" class="b to"/>
+	</label>
+	<label class="y from">Blocks: <input
+			type="number" min="1" max="255" value="255" id="n" class="y to"/>
+	</label>
+	<button onclick="init()">Apply</button>
+	<div id="container"></div>
+	<script src="scripts/three.min.js"></script>
+	<script src="scripts/OrbitControls.js"></script>
+	<script src="scripts/index.js"></script>
+	<link rel="stylesheet" href="index.css">
+	</body>
+</html>

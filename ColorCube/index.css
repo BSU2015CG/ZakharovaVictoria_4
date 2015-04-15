@@ -1,0 +1,44 @@
+input, button, label {
+    position: fixed;
+}
+label {
+    color:white;
+}
+input {
+    width: 50px;
+}
+.from {
+    left: 90px;
+}
+label.from {
+    left:30px;
+}
+.to {
+    left: 180px;
+}
+label.to {
+    left: 160px;
+}
+.r {
+  top: 10px;
+}
+.g {
+    top: 55px;
+}
+.b {
+    top: 100px;
+}
+.y {
+    top: 140px;
+}
+button {
+    top: 180px;
+    left: 30px;
+    height: 30px;
+    width: 203px;
+    color: white;
+    background-color: black;
+}
+body {
+    margin: 0;
+}
