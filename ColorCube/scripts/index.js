@@ -1,15 +1,44 @@
 var container, camera, scene, renderer, controls;
-var fromR, fromG, fromB, toR, toG, toB;
-var n = parseInt(document.getElementById("n").value);
+var fromR, fromG, fromB, toR, toG, toB, n = 16;
+
+var storageEmpty = (localStorage.getItem("fromR") == undefined);
+rFrom.value = rTo.min = storageEmpty ? 0 : localStorage["fromR"];
+gFrom.value = gTo.min = storageEmpty ? 0 : localStorage["fromG"];
+bFrom.value = bTo.min = storageEmpty ? 0 : localStorage["fromB"];
+rTo.value = storageEmpty ? n : localStorage["toR"];
+gTo.value = storageEmpty ? n : localStorage["toG"];
+bTo.value = storageEmpty ? n : localStorage["toB"];
+rTo.max = gTo.max = bTo.max = blocks.value = storageEmpty ? n : localStorage["n"];
+
 init();
 animate();
 
 function init() {
-    n = parseInt(document.getElementById("n").value);
-    rTo.max = gTo.max = bTo.max = rTo.value = gTo.value = bTo.value = n;
+    if( localStorage["n"] != blocks.value) {
+        var inputs = document.getElementsByClassName("from");
+        for(var i = 0; i < inputs.length; i++){
+            inputs[i].value = 0;
+        }
+        inputs = document.getElementsByClassName("to");
+        for(var i = 0; i < inputs.length-1; i++){
+            inputs[i].value = inputs[i].max = blocks.value;
+        }
+    }
+    localStorage["n"] = blocks.value;
+    localStorage["fromR"] = rFrom.value;
+    localStorage["fromG"] = gFrom.value;
+    localStorage["fromB"] = bFrom.value;
+    localStorage["toR"] = rTo.value;
+    localStorage["toG"] = gTo.value;
+    localStorage["toB"] = bTo.value;
+    n = parseInt(localStorage["n"]);
+    fromR = parseInt(localStorage["fromR"]);
+    fromG = parseInt(localStorage["fromG"]);
+    fromB = parseInt(localStorage["fromB"]);
+    toR = parseInt(localStorage["toR"]);
+    toG = parseInt(localStorage["toG"]);
+    toB = parseInt(localStorage["toB"]);
     var distance = 4.7;
-    fromR = parseInt(rFrom.value), fromG = parseInt(gFrom.value), fromB = parseInt(bFrom.value),
-        toR = parseInt(rTo.value), toG = parseInt(gTo.value), toB = parseInt(bTo.value);
     var maxDistance = Math.max(toR - fromR, toG - fromG, toB - fromB);
     container = document.getElementById( 'container' );
     if(container.children.length > 0) {
@@ -17,15 +46,17 @@ function init() {
     }
     camera = new THREE.PerspectiveCamera( 27, window.innerWidth / window.innerHeight, 5, maxDistance * 100 );
     camera.position.z = maxDistance * 40;
+    camera.position.x = -n*10;
+    camera.position.y = n*10;
 
     scene = new THREE.Scene();
     var dr = toR - fromR, dg = toG - fromG, db = toB-fromB;
-    var particles = (dr*dg + dg*db + dr*db)*2;
+    var particles = (dr*dg + dg*db + dr*db + (dr-1)*(dg-1) + (dg-1)*(db-1) + (dr-1)*(db-1))*2;
     var geometry = new THREE.BufferGeometry();
     var positions = new Float32Array( particles * 3 );
     var colors = new Float32Array( particles * 3 );
 
-    var cube = new THREE.Mesh(new THREE.BoxGeometry(distance * (dr-1.8), distance * (dg-1.8), distance * (db-1.8)),
+    var cube = new THREE.Mesh(new THREE.BoxGeometry(distance * (dr-1.8-2), distance * (dg-1.8-2), distance * (db-1.8-2)),
         new THREE.MeshBasicMaterial( {color: 0x000000} ));
     cube.position.x -= 3.06;
     cube.position.y -= 3.06;
@@ -61,6 +92,24 @@ function init() {
             addParticle(x, toG-1, z);
         }
     }
+    for (var x = fromR+1; x < toR-1; x++) {
+        for (var y = fromG+1; y < toG-1; y++) {
+            addParticle(x, y, fromB+1);
+            addParticle(x, y, toB-2);
+        }
+    }
+    for (var y = fromG+1; y < toG-1; y++) {
+        for (var z = fromB+1; z < toB-1; z++) {
+            addParticle(fromR+1, y, z);
+            addParticle(toR-2, y, z);
+        }
+    }
+    for (var x = fromR+1; x < toR-1; x++) {
+        for (var z = fromB+1; z < toB-1; z++) {
+            addParticle(x, fromG+1, z);
+            addParticle(x, toG-2, z);
+        }
+    }
     geometry.addAttribute( 'position', new THREE.BufferAttribute( positions, 3 ) );
     geometry.addAttribute( 'color', new THREE.BufferAttribute( colors, 3 ) );
     var texture = THREE.ImageUtils.loadTexture('images/ball.png');
@@ -82,6 +131,7 @@ function init() {
     controls = new THREE.OrbitControls(camera, document, renderer.domElement);
     controls.addEventListener( 'change', render );
     controls.minDistance = maxDistance*10;
+    controls.maxDistance = maxDistance*70;
 }
 
 function onWindowResize() {

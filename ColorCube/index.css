@@ -1,4 +1,4 @@
-input, button, label {
+input, label {
     position: fixed;
 }
 label {
@@ -10,13 +10,13 @@ input {
 .from {
     left: 90px;
 }
-label.from {
+.labelFrom {
     left:30px;
 }
 .to {
     left: 180px;
 }
-label.to {
+.labelTo {
     left: 160px;
 }
 .r {
@@ -31,7 +31,7 @@ label.to {
 .y {
     top: 140px;
 }
-button {
+input[type="submit"] {
     top: 180px;
     left: 30px;
     height: 30px;
