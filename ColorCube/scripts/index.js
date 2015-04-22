@@ -132,6 +132,30 @@ function init() {
     controls.addEventListener( 'change', render );
     controls.minDistance = maxDistance*10;
     controls.maxDistance = maxDistance*70;
+    var console = document.getElementById("console");
+    var log = function(info) {
+        console.innerHTML = info;
+    }
+    var mouseVector = new THREE.Vector2();
+    var rayCaster = new THREE.Raycaster();
+    rayCaster.params.PointCloud.threshold = 2.5;
+    var onDocumentMouseMove = function(e) {
+        mouseVector.x = 2 * (e.clientX / renderer.domElement.width) - 1;
+        mouseVector.y = 1 - 2 * (e.clientY / renderer.domElement.height);
+        var vector = new THREE.Vector3(mouseVector.x, mouseVector.y, 0.5).unproject(camera);
+        rayCaster.ray.set(camera.position, vector.sub(camera.position).normalize());
+        intersects = rayCaster.intersectObject(particleSystem);
+        if(intersects.length > 0) {
+            var point = intersects[0].point,
+                r = Math.round(point.x/distance + (fromR+toR)/2),
+                g = Math.round(point.y/distance + (fromG+toG)/2),
+                b = Math.round(point.z/distance + (fromB+toB)/2);
+            if(r >= 0 && g >= 0 && b >= 0) {
+                log('R: ' + r + ', G: ' + g + ', B: ' + b);
+            } else log("");
+        } else log("");
+    }
+    window.addEventListener( 'mousemove', onDocumentMouseMove);
 }
 
 function onWindowResize() {
