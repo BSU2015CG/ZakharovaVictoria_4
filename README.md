@@ -1,4 +1,4 @@
 Run ColorCube in chrome with options:
 chrome —allow-file-access-from-files
 
-RGB по точкам попозже добавлю.
+Лаб4. Срубается при нажатии на вторую кнопку так как в программе жестко зашита директория... В остальном - зачтено
